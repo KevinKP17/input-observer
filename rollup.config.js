@@ -8,10 +8,14 @@ export default {
   output: [
     {
       file: packageJson.main,
-      format: "umd",
+      format: 'cjs',
       sourcemap: true,
-      name: "InputObserver",
     },
+    {
+      file: packageJson.module,
+      format: 'esm',
+      sourcemap: true,
+    }
   ],
   plugins: [
     cleaner({

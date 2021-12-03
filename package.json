@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "just add water observer for input element",
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "repository": "git@github.com:KevinKP17/input-observer.git",
   "author": "Kevin Prathama <kevin.prathama93@gmail.com>",
   "license": "MIT",
