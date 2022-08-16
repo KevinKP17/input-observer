@@ -20,7 +20,8 @@ test("record input event", () => {
   let input: Partial<InputAttributes> = {};
   const callback: EventCallback = (data: InputObserverValue)=>{ input = data };
 
-  new InputObserver(callback).observe(element)
+  const observer = new InputObserver(callback)
+  observer.observe(element)
 
   element.dispatchEvent(new FocusEvent("focus"))
   expect(input.data).toEqual(null)
@@ -37,4 +38,14 @@ test("record input event", () => {
   element.dispatchEvent(new FocusEvent("blur"))
   expect(input.data).toEqual(null)
   expect(input.inputType).toEqual("blur")
+
+  input = {}
+  observer.unobserve()
+
+  element.dispatchEvent(new FocusEvent("focus"))
+  element.dispatchEvent(new InputEvent("input", { data: "a", inputType: "insertText" }))
+  element.dispatchEvent(new FocusEvent("blur"))
+
+  expect(input.data).toBeUndefined()
+  expect(input.inputType).toBeUndefined()
 });
