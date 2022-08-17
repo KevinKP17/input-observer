@@ -53,7 +53,7 @@ export class InputObserver implements IObserver{
     return fn(this.convertInput(event))
   }
 
-  private convertInput(event: Event): InputObserverValue {
+  private convertInput(event: Event): InputAttributes {
     if (event instanceof InputEvent) {
       return {
         data: (<InputElement>event.currentTarget).value,
@@ -64,7 +64,7 @@ export class InputObserver implements IObserver{
           this.options.timestampDivider,
         ),
       }
-    } else if (event instanceof FocusEvent) {
+    } else {
       return {
         data: null,
         isTrusted: event.isTrusted,
@@ -74,8 +74,6 @@ export class InputObserver implements IObserver{
           this.options.timestampDivider,
         ),
       }
-    } else {
-      return event
     }
   }
 }
