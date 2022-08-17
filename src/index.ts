@@ -3,8 +3,6 @@ const calculateTimestamp = (timeStamp: number, divider: number) => {
   return parseInt(Math.ceil(timeStamp / divider).toString())
 }
 
-// TODO: Better form of data to return for InputAttributes
-// TODO: user selections events
 export class InputObserver implements IObserver{
   private callback
   private options
